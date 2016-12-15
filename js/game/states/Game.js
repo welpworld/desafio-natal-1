@@ -21,12 +21,9 @@ Welpworld.Game.prototype = {
   create: function() {
 
     this.fundo = jogo.utilizarSprite(0,0,jogo.larguraTela(),jogo.alturaTela(),'fundo');  
-    this.horizonte = jogo.utilizarSprite(0, 250, jogo.larguraTela(), jogo.alturaTela(), 'horizonte');
-    this.mar = jogo.utilizarSprite(0, jogo.alturaTela()-145, jogo.larguraTela(), jogo.alturaTela(), 'mar');
-    
     
     this.jogador1 = jogo.utilizarImagem(75, 300, 0.5 , 'jogador');
-    this.jogador2 = jogo.utilizarImagem(jogo.larguraTela()-75, 300, 0.5 , 'jogador');
+    this.jogador2 = jogo.utilizarImagem(jogo.larguraTela()-75, 300, 0.5 , 'inimigo');
 
     jogo.definirEscalaObjecto(this.jogador1,.5);
     jogo.definirEscalaObjecto(this.jogador2,.5);
@@ -74,18 +71,18 @@ Welpworld.Game.prototype = {
   
   movimentoJogador1: function() {
     
-    if(jogo.teclaPressionada("cima")){
+    if(jogo.teclaPressionada("w")){
         jogo.definirVelocidadeY(this.jogador1, -this.velocidadeJogador);
-     }else if (jogo.teclaPressionada("baixo")){
+     }else if (jogo.teclaPressionada("s")){
        jogo.definirVelocidadeY(this.jogador1, this.velocidadeJogador);
      }else{
         jogo.definirVelocidadeY(this.jogador1,0);
      }
 
-     if(jogo.teclaPressionada("esquerda"))  {
+     if(jogo.teclaPressionada("a"))  {
        jogo.definirVelocidadeX(this.jogador1, -this.velocidadeJogador);
        jogo.espelharSprite(this.jogador1,"esquerda");
-     }else if(jogo.teclaPressionada("direita") && this.jogador1.x < this.movimentoMaximoX)  {
+     }else if(jogo.teclaPressionada("d") && this.jogador1.x < this.movimentoMaximoX)  {
         jogo.espelharSprite(this.jogador1,"direita");
         jogo.definirVelocidadeX(this.jogador1, this.velocidadeJogador);
      }else {
@@ -93,7 +90,7 @@ Welpworld.Game.prototype = {
         jogo.espelharSprite(this.jogador1,"direita");
      }
      
-     if(jogo.teclaPressionada("enter") && this.vivo===jogo.verdade){
+     if(jogo.teclaPressionada("espaco") && this.vivo===jogo.verdade){
         if (jogo.tempoAgora() > this.proximoTiroJogador1 && jogo.numeroObjectosDestruidos(this.balas1) > 0)
         {
           this.proximoTiroJogador1 = jogo.tempoAgora() + this.frequenciaBala;
@@ -106,18 +103,18 @@ Welpworld.Game.prototype = {
 
   movimentoJogador2: function() {
   
-  if(jogo.teclaPressionada("w")){
+  if(jogo.teclaPressionada("cima")){
       jogo.definirVelocidadeY(this.jogador2, -this.velocidadeJogador);
-    }else if (jogo.teclaPressionada("s")){
+    }else if (jogo.teclaPressionada("baixo")){
       jogo.definirVelocidadeY(this.jogador2, this.velocidadeJogador);
     }else{
       jogo.definirVelocidadeY(this.jogador2,0);
     }
 
-    if(jogo.teclaPressionada("a") && this.jogador2.x > jogo.larguraTela()-this.movimentoMaximoX)  {
+    if(jogo.teclaPressionada("esquerda") && this.jogador2.x > jogo.larguraTela()-this.movimentoMaximoX)  {
       jogo.definirVelocidadeX(this.jogador2, -this.velocidadeJogador);
       jogo.espelharSprite(this.jogador2,"esquerda");
-    }else if(jogo.teclaPressionada("d") )  {
+    }else if(jogo.teclaPressionada("direita") )  {
       jogo.espelharSprite(this.jogador2,"direita");
       jogo.definirVelocidadeX(this.jogador2, this.velocidadeJogador);
     }else {
@@ -125,7 +122,7 @@ Welpworld.Game.prototype = {
       jogo.espelharSprite(this.jogador2,"esquerda");
     }
     
-    if(jogo.teclaPressionada("espaco") && this.vivo===jogo.verdade){
+    if(jogo.teclaPressionada("enter") && this.vivo===jogo.verdade){
       if (jogo.tempoAgora() > this.proximoTiroJogador2 && jogo.numeroObjectosDestruidos(this.balas2) > 0)
       {
         this.proximoTiroJogador2 = jogo.tempoAgora() + this.frequenciaBala;

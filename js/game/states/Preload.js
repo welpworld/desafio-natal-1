@@ -12,13 +12,11 @@ Welpworld.Preload.prototype = {
     
     jogo.definirBarraCarregamento(this.barra);
  
-    jogo.carregarImagem('fundo', 'assets/images/Capture.PNG');
-    jogo.carregarImagem('horizonte', 'assets/images/mar 2.png');
-    jogo.carregarImagem('mar', 'assets/images/mar 1.png');
+    jogo.carregarImagem('fundo', 'assets/images/fundo_natal.png');
     
-    jogo.carregarSprite('jogador', 'assets/images/barco_bom.png', 213.85, 175.13, 2);
-    jogo.carregarSprite('inimigo', 'assets/images/barco_mau.png', 224.8, 175.13,2);
-    jogo.carregarImagem('bomba', 'assets/images/bomba.png');
+    jogo.carregarSprite('jogador', 'assets/images/pai_natal_vermelho.png', 106, 93, 1);
+    jogo.carregarSprite('inimigo', 'assets/images/pai_natal_verde.png', 106, 93,1);
+    jogo.carregarImagem('bomba', 'assets/images/doce_bengala.png');
 
     jogo.carregarTextoBitmap('minecraftia', 'assets/fonts/minecraftia/minecraftia.png', 'assets/fonts/minecraftia/minecraftia.xml');
 
