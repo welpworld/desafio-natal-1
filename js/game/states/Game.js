@@ -3,7 +3,7 @@ Welpworld.Game = function() {
   this.velocidadeJogador = 300;
   this.velocidadeBalas = 500;
 
-  this.movimentoMaximoX=300;
+  this.movimentoMaximoX=500;
   
   this.pontos = 0;
 
@@ -15,18 +15,20 @@ Welpworld.Game = function() {
 
   this.vivo=jogo.verdade;
   this.reiniciar = jogo.falso;
+
 };
 
 Welpworld.Game.prototype = {
   create: function() {
 
-    this.fundo = jogo.utilizarSprite(0,0,jogo.larguraTela(),jogo.alturaTela(),'fundo');  
+    this.fundo = jogo.utilizarSprite(-1,-1,jogo.larguraTela()+1,jogo.alturaTela()+1,'fundo');
+ 
     
     this.jogador1 = jogo.utilizarImagem(75, 300, 0.5 , 'jogador');
     this.jogador2 = jogo.utilizarImagem(jogo.larguraTela()-75, 300, 0.5 , 'inimigo');
 
-    jogo.definirEscalaObjecto(this.jogador1,.5);
-    jogo.definirEscalaObjecto(this.jogador2,.5);
+    jogo.definirEscalaObjecto(this.jogador1,.6);
+    jogo.definirEscalaObjecto(this.jogador2,.6);
 
 
     //create groups 
@@ -38,16 +40,11 @@ Welpworld.Game.prototype = {
     jogo.definirParaTodos(this.balas1, 'verificarLimitesTela',jogo.verdade);
     jogo.definirParaTodos(this.balas1, 'destruirForaTela', jogo.verdade);
 
-
     jogo.utilizarFisicaGrupo(this.balas2);
     jogo.criarVarios(this.balas2, 5, 'bomba');
     jogo.definirParaTodos(this.balas2, 'verificarLimitesTela',jogo.verdade);
     jogo.definirParaTodos(this.balas2, 'destruirForaTela', jogo.verdade);
     
-
-   
-    //this.textoPontos = jogo.adicionarTextoBitmap(10,10, 'minecraftia', 'Pontuacao: ' + this.pontos, 24);
-
     jogo.activarFisica();
 
     jogo.utilizarFisica(this.jogador1);
@@ -59,6 +56,7 @@ Welpworld.Game.prototype = {
 },
   update: function() {
 
+ 
    this.movimentoJogador1();
    this.movimentoJogador2();
    
@@ -67,6 +65,7 @@ Welpworld.Game.prototype = {
 
    if(jogo.teclaPressionada("r") && this.reiniciar===jogo.verdade)
       this.recomecar();
+
   },
   
   movimentoJogador1: function() {
@@ -98,7 +97,8 @@ Welpworld.Game.prototype = {
           
         }
      }
-      
+
+          
   },
 
   movimentoJogador2: function() {
@@ -130,11 +130,12 @@ Welpworld.Game.prototype = {
         
       }
     }
-    
 },
   criarBalaJogador1: function(){
     var bala = jogo.primeiroElementoDestruido(this.balas1);
-    jogo.definirEscalaObjecto(bala,0.6);
+    jogo.definirEscalaObjecto(bala,0.8);
+    jogo.criarAnimacao('rodar',[0,1,2,3,4,5,6,7],bala);
+    jogo.iniciarAnimacao('rodar',10 ,jogo.verdade,bala);
 
     jogo.definirPosicao(bala, this.jogador1.x, this.jogador1.y)
     jogo.definirVelocidadeX(bala, this.velocidadeBalas);
@@ -142,7 +143,11 @@ Welpworld.Game.prototype = {
 
     criarBalaJogador2: function(){
     var bala = jogo.primeiroElementoDestruido(this.balas2);
-    jogo.definirEscalaObjecto(bala,0.6);
+    jogo.definirEscalaObjecto(bala,0.8);
+
+    jogo.criarAnimacao('rodar',[0,1,2,3,4,5,6,7],bala);
+    jogo.iniciarAnimacao('rodar',10 ,jogo.verdade,bala);
+    jogo.espelharSprite(bala,"esquerda");
 
     jogo.definirPosicao(bala, this.jogador2.x, this.jogador2.y)
     jogo.definirVelocidadeX(bala, -this.velocidadeBalas);
@@ -166,6 +171,9 @@ Welpworld.Game.prototype = {
   fimJogo: function() {
     
     //this.pontos = 0;
+    jogo.destruirGrupo(this.balas1);
+    jogo.destruirGrupo(this.balas2);
+    
     this.proximaBomba = jogo.numeroMaximo();
     this.proximoInimigo = jogo.numeroMaximo();
      

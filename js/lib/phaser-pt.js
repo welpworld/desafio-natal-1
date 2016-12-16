@@ -41,6 +41,8 @@ var Motor = function () {
         "verificarLimitesTela" : 'checkWorldBounds',
         "destruirForaTela" : 'outOfBoundsKill',
         "velocidadeX" : 'body.velocity.x',
+        "velocidadeY" : 'body.velocity.y',
+        "rodar" : 'angle'
     }
     
 }
@@ -276,7 +278,7 @@ Motor.prototype = {
     },
 
     definirParaTodos: function(objecto, propriedade, valor){
-        objecto.setAll(this.propriedade[propriedade],true);
+        objecto.setAll(this.propriedade[propriedade],valor);
     }, 
     
     criarVarios: function(objecto, numeroObejctos, id){

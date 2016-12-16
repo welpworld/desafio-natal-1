@@ -16,7 +16,7 @@ Welpworld.Preload.prototype = {
     
     jogo.carregarSprite('jogador', 'assets/images/pai_natal_vermelho.png', 106, 93, 1);
     jogo.carregarSprite('inimigo', 'assets/images/pai_natal_verde.png', 106, 93,1);
-    jogo.carregarImagem('bomba', 'assets/images/doce_bengala.png');
+    jogo.carregarSprite('bomba', 'assets/images/festa_do_rebucado.png',35, 35, 7);
 
     jogo.carregarTextoBitmap('minecraftia', 'assets/fonts/minecraftia/minecraftia.png', 'assets/fonts/minecraftia/minecraftia.xml');
 
