@@ -4,8 +4,6 @@ Welpworld.Game = function() {
   this.velocidadeBalas = 500;
 
   this.movimentoMaximoX=500;
-  
-  this.pontos = 0;
 
   this.vencedor = "";
 
@@ -24,8 +22,8 @@ Welpworld.Game.prototype = {
     this.fundo = jogo.utilizarSprite(-1,-1,jogo.larguraTela()+1,jogo.alturaTela()+1,'fundo');
  
     
-    this.jogador1 = jogo.utilizarImagem(75, 300, 0.5 , 'jogador');
-    this.jogador2 = jogo.utilizarImagem(jogo.larguraTela()-75, 300, 0.5 , 'inimigo');
+    this.jogador1 = jogo.utilizarImagem(75, 300, 0.5 , 'jogador1');
+    this.jogador2 = jogo.utilizarImagem(jogo.larguraTela()-75, 300, 0.5 , 'jogador2');
 
     jogo.definirEscalaObjecto(this.jogador1,.6);
     jogo.definirEscalaObjecto(this.jogador2,.6);
@@ -173,16 +171,12 @@ Welpworld.Game.prototype = {
     //this.pontos = 0;
     jogo.destruirGrupo(this.balas1);
     jogo.destruirGrupo(this.balas2);
-    
-    this.proximaBomba = jogo.numeroMaximo();
-    this.proximoInimigo = jogo.numeroMaximo();
-     
+
     this.vivo=jogo.falso;
 
     jogo.adicionarRectangulo(0,0,jogo.larguraTela(),jogo.alturaTela(),'#000',0.7)
     
-    
-      var texto="O vencedor foi: " + this.vencedor; 
+    var texto="O vencedor foi: " + this.vencedor; 
     var pontuacao=jogo.adicionarTextoBitmap(0,0,'minecraftia', texto,28);
     pontuacao.x = jogo.larguraTela() / 2 - jogo.largura(pontuacao) /2 ;
     pontuacao.y = jogo.alturaTela() / 2 - jogo.altura(pontuacao)  / 2 - 25;
