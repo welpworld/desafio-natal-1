@@ -61,7 +61,7 @@ Welpworld.Game.prototype = {
    jogo.sobreposicao(this.jogador2,this.balas1,this.destruirInimigo2,this);
    jogo.sobreposicao(this.jogador1,this.balas2,this.destruirInimigo1,this);
 
-   if(jogo.teclaPressionada("r") && this.reiniciar===jogo.verdade)
+   if((jogo.teclaPressionada("r") || jogo.jogo.input.activePointer.isDown) && this.reiniciar===jogo.verdade)
       this.recomecar();
 
   },

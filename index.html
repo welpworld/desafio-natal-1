@@ -4,8 +4,14 @@
 <head>
   <title>Welpworld</title>
  
+ 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="minimal-ui">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+   <meta property="og:url"           content="http://omeuprimeirojogo.welpworld.com" />
+   <meta property="og:type"          content="website" />
+   <meta property="og:title"         content="welpworld" />
+   <meta property="og:description"   content="ensinar programação através da criação de jogos" />
 
   <!-- include the phaser library -->
   <script src="js/lib/phaser.js"></script>
@@ -35,13 +41,29 @@
     border: 0px;
     background-color:black;
   }
+   #turn{
+				width:100%;
+				height:100%;
+				position:fixed;
+				top:0px;
+				left:0px;
+				background-color:white;
+				background-image:url('assets/images/Untitled.png');
+				background-repeat:no-repeat;
+				background-position: center center;
+				display:none;
+			}
   </style>
 </head>
 
 <body>
+      <div id="turn">
+      
+    </div>
     <div id="jogo">
 
   </div>
+  
  <!-- include the main game file +
   -->
    <script src="js/main.js"></script>
