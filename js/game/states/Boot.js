@@ -30,7 +30,7 @@ Welpworld.Boot.prototype = {
     keyboard.addKeyCapture(Phaser.Keyboard.RIGHT);
     
     if (jogo.paraDispositivoMovel()) {
-      jogo.definirDimensoesMovel(568,600,2048,1536,true);
+      jogo.definirDimensoesMovel(500,300,1100,600,true);
     }
 
     jogo.activarEstado('Preloader');
