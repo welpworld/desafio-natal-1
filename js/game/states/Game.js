@@ -50,8 +50,8 @@ Welpworld.Game.prototype = {
     jogo.utilizarFisica(this.jogador1);
     jogo.utilizarFisica(this.jogador2);
     
-    jogo.objectoCollideComLimites(this.jogador1,jogo.verdade);
-    jogo.objectoCollideComLimites(this.jogador2,jogo.verdade);
+    jogo.objectoColideComLimites(this.jogador1,jogo.verdade);
+    jogo.objectoColideComLimites(this.jogador2,jogo.verdade);
        
 },
   update: function() {
